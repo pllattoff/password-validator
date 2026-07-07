@@ -83,4 +83,29 @@ class PasswordValidatorTest {
     void isCommonPassword_shouldReturnFalse_whenGivenEmptyString() {
         assertFalse(PasswordValidator.isCommonPassword("         "));
     }
+
+    @Test
+    void containsSpecialChar_shouldReturnFalse_whenNoSpecialCharIsPresent() {
+        assertFalse(PasswordValidator.containsSpecialChar("Abc1defg", "!@#$%^&*()-_+=?.,;:"));
+    }
+    @Test
+    void containsSpecialChar_shouldReturnTrue_whenSpecialCharIsPresent() {
+        assertTrue(PasswordValidator.containsSpecialChar("Abc(1defg", "!@#$%^&*()-_+=?.,;:"));
+    }
+    @Test
+    void containsSpecialChar_shouldReturnFalse_whenGivenNullAndSpecialChars() {
+        assertFalse(PasswordValidator.containsSpecialChar(null, "!@#$%^&*()-_+=?.,;:"));
+    }
+    @Test
+    void containsSpecialChar_shouldReturnFalse_whenGivenEmptyStrindAndSpecialChars() {
+        assertFalse(PasswordValidator.containsSpecialChar(" ", "!@#$%^&*()-_+=?.,;:"));
+    }
+    @Test
+    void containsSpecialChar_shouldReturnFalse_whenGivenPasswordAndNull() {
+        assertFalse(PasswordValidator.containsSpecialChar("Abc1defg", null));
+    }
+    @Test
+    void containsSpecialChar_shouldReturnFalse_whenGivenPasswordAndEmptyString() {
+        assertFalse(PasswordValidator.containsSpecialChar("Abc1defg", " "));
+    }
 }

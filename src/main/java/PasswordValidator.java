@@ -17,8 +17,8 @@ public class PasswordValidator {
             return false;
         }
 
-        for (char c : password.toCharArray()) {
-            if (Character.isDigit(c)) {
+        for (char ch : password.toCharArray()) {
+            if (Character.isDigit(ch)) {
                 return true;
             }
         }
@@ -35,15 +35,15 @@ public class PasswordValidator {
         boolean hasUpperCase = false;
         boolean hasLowerCase = false;
 
-        for (char c : password.toCharArray()) {
-            if (Character.isUpperCase(c)) {
+        for (char ch : password.toCharArray()) {
+            if (Character.isUpperCase(ch)) {
                 hasUpperCase = true;
                 break;
             }
         }
 
-        for (char c : password.toCharArray()) {
-            if (Character.isLowerCase(c)) {
+        for (char ch : password.toCharArray()) {
+            if (Character.isLowerCase(ch)) {
                 hasLowerCase = true;
                 break;
             }
@@ -62,6 +62,21 @@ public class PasswordValidator {
 
         for (String commonPassword : COMMON_PASSWORDS) {
             if (commonPassword.equalsIgnoreCase(password)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static boolean containsSpecialChar(String password, String allowed) {
+
+        if (password == null || password.isBlank() || allowed == null || allowed.isBlank()) {
+            return false;
+        }
+
+        for (char ch : allowed.toCharArray()) {
+            if (password.indexOf(ch) >= 0) {
                 return true;
             }
         }
