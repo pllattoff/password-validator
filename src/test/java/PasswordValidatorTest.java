@@ -51,11 +51,36 @@ class PasswordValidatorTest {
         assertTrue(PasswordValidator.containsUpperAndLower("Abc1defg"));
     }
     @Test
+    void containsUpperAndLower_shouldReturnFalse_whenGivenOneLetter() {
+        assertFalse(PasswordValidator.containsUpperAndLower("a"));
+    }
+    @Test
     void containsUpperAndLower_shouldReturnFalse_whenGivenNull() {
         assertFalse(PasswordValidator.containsUpperAndLower(null));
     }
     @Test
     void containsUpperAndLower_shouldReturnFalse_whenGivenEmptyString() {
         assertFalse(PasswordValidator.containsUpperAndLower("         "));
+    }
+
+    @Test
+    void isCommonPassword_shouldReturnTrue_whenGivenCommonPassword() {
+        assertTrue(PasswordValidator.isCommonPassword("Password"));
+    }
+    @Test
+    void isCommonPassword_shouldReturnTrue_whenGivenCommonPasswordWithSpace() {
+        assertTrue(PasswordValidator.isCommonPassword(" password "));
+    }
+    @Test
+    void isCommonPassword_shouldReturnFalse_whenGivenNotCommonPassword() {
+        assertFalse(PasswordValidator.isCommonPassword("Abc1defg"));
+    }
+    @Test
+    void isCommonPassword_shouldReturnFalse_whenGivenNull() {
+        assertFalse(PasswordValidator.isCommonPassword(null));
+    }
+    @Test
+    void isCommonPassword_shouldReturnFalse_whenGivenEmptyString() {
+        assertFalse(PasswordValidator.isCommonPassword("         "));
     }
 }

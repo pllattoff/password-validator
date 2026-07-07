@@ -1,6 +1,9 @@
 public class PasswordValidator {
 
+    static final String[] COMMON_PASSWORDS = {"password", "Passwort1", "12345678", "Aa345678"};
+
     public static boolean hasMinLength(String password, int min) {
+
         if (password == null || password.isBlank()) {
             return false;
         }
@@ -9,6 +12,7 @@ public class PasswordValidator {
     }
 
     public static boolean containsDigit(String password) {
+
         if (password == null || password.isBlank()) {
             return false;
         }
@@ -46,6 +50,23 @@ public class PasswordValidator {
         }
 
         return hasUpperCase && hasLowerCase;
+    }
+
+    public static boolean isCommonPassword(String password) {
+
+        if (password == null || password.isBlank()) {
+            return false;
+        }
+
+        password = password.trim();
+
+        for (String commonPassword : COMMON_PASSWORDS) {
+            if (commonPassword.equalsIgnoreCase(password)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 
