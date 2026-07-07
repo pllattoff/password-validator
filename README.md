@@ -12,4 +12,4 @@ Ein gültiges Passwort muss:
 - Das Passwort muss mindestens ein Sonderzeichen enthalten.
 
 Erlaubte Sonderzeichen:
-! @ # $ % & * ? _
+! @ # $ % ^ & * ( ) - _ + = ? . , ; :
