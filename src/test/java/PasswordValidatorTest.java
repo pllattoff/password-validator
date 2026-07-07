@@ -21,4 +21,20 @@ class PasswordValidatorTest {
         assertFalse(PasswordValidator.hasMinLength("         ", 8));
     }
 
+    @Test
+    void containsDigit_shouldReturnFalse_whenGivenNoDigit() {
+        assertFalse(PasswordValidator.containsDigit("Abcdefgh"));
+    }
+    @Test
+    void containsDigit_shouldReturnTrue_whenGivenDigit() {
+        assertTrue(PasswordValidator.containsDigit("Abcde1fgh"));
+    }
+    @Test
+    void containsDigit_shouldReturnFalse_whenGivenNull() {
+        assertFalse(PasswordValidator.containsDigit(null));
+    }
+    @Test
+    void containsDigit_shouldReturnFalse_whenGivenEmptyString() {
+        assertFalse(PasswordValidator.containsDigit("         "));
+    }
 }
