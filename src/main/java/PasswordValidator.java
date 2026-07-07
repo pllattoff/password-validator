@@ -1,6 +1,8 @@
 public class PasswordValidator {
 
     static final String[] COMMON_PASSWORDS = {"password", "Passwort1", "12345678", "Aa345678"};
+    static final String ALLOWED_SPECIAL_CHARS = "!@#$%^&*()-_+=?.,;:";
+    static final int MIN_PASSWORD_LENGTH = 8;
 
     public static boolean hasMinLength(String password, int min) {
 
@@ -82,6 +84,15 @@ public class PasswordValidator {
         }
 
         return false;
+    }
+
+    public static boolean isValid(String password) {
+
+        return hasMinLength(password, MIN_PASSWORD_LENGTH)
+                && containsDigit(password)
+                && containsUpperAndLower(password)
+                && !isCommonPassword(password)
+                && containsSpecialChar(password, ALLOWED_SPECIAL_CHARS);
     }
 
 

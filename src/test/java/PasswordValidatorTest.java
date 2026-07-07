@@ -108,4 +108,41 @@ class PasswordValidatorTest {
     void containsSpecialChar_shouldReturnFalse_whenGivenPasswordAndEmptyString() {
         assertFalse(PasswordValidator.containsSpecialChar("Abc1defg", " "));
     }
+
+    @Test
+    void isValid_shouldReturnFalse_whenGiven7LetterPassword() {
+        assertFalse(PasswordValidator.isValid("Abc1de*"));
+    }
+    @Test
+    void isValid_shouldReturnFalse_whenGivenNoDigit() {
+        assertFalse(PasswordValidator.isValid("Abccdef*"));
+    }
+    @Test
+    void isValid_shouldReturnFalse_whenGivenUpperCaseOnly() {
+        assertFalse(PasswordValidator.isValid("ABCDEFG1*"));
+    }
+    @Test
+    void isValid_shouldReturnFalse_whenNoSpecialCharIsPresent() {
+        assertFalse(PasswordValidator.isValid("Abc1def"));
+    }
+    @Test
+    void isValid_shouldReturnFalse_whenGivenCommonPassword() {
+        assertFalse(PasswordValidator.isValid("Password"));
+    }
+    @Test
+    void isValid_shouldReturnTrue_whenGiven8LetterPassword() {
+        assertTrue(PasswordValidator.isValid("Abc1de3*"));
+    }
+    @Test
+    void isValid_shouldReturnTrue_whenGivenDigit() {
+        assertTrue(PasswordValidator.isValid("Abcc0def*"));
+    }
+    @Test
+    void isValid_shouldReturnTrue_whenSpecialCharIsPresent() {
+        assertTrue(PasswordValidator.isValid("Abc1def*"));
+    }
+    @Test
+    void isValid_shouldReturnTrue_whenGivenLongPassword() {
+        assertTrue(PasswordValidator.isValid("Abc1def*877hliIIklji76)lnln8896gkKJLhh!;kbb(hqrtIUY8kdef*877hlif*877hliIIklji76)lnln8896gklji76)lnln8896gkKJLhh!;kbb(hqrtIUY8kdef*877hlif"));
+    }
 }
