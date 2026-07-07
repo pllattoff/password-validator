@@ -48,7 +48,7 @@ class PasswordValidatorTest {
     }
     @Test
     void containsUpperAndLower_shouldReturnTrue_whenGivenUpperAndLowerCase() {
-        assertTrue(PasswordValidator.containsUpperAndLower("Abc1defg"));
+        assertTrue(PasswordValidator.containsUpperAndLower("AbCdEfG1"));
     }
     @Test
     void containsUpperAndLower_shouldReturnFalse_whenGivenOneLetter() {
