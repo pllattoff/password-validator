@@ -22,5 +22,31 @@ public class PasswordValidator {
         return false;
     }
 
+    public static boolean containsUpperAndLower(String password) {
+
+        if (password == null || password.isBlank()) {
+            return false;
+        }
+
+        boolean hasUpperCase = false;
+        boolean hasLowerCase = false;
+
+        for (char c : password.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                hasUpperCase = true;
+                break;
+            }
+        }
+
+        for (char c : password.toCharArray()) {
+            if (Character.isLowerCase(c)) {
+                hasLowerCase = true;
+                break;
+            }
+        }
+
+        return hasUpperCase && hasLowerCase;
+    }
+
 
 }
